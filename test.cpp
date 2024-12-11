@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 int main() {
@@ -46,33 +47,52 @@ int main() {
 
 
 
-            if (kecepatanPilihan < 0 || kecepatanPilihan > 4) {
+            if (kecepatanPilihan < 0 || kecepatanPilihan > 3) {
                 cout << "Pilihan kecepatan tidak valid!" << endl;
             } else {
-				menuLain:
-                cout << "\n1. Histori Pembayaran" << endl;
-                cout << "2. Produk lainnya" << endl;
-                cout << "3. Keluar" << endl;
-                cout << "Pilihlah angka 1-3: ";
-                int pilihanMenu;
-                cin >> pilihanMenu;
-                if (pilihanMenu == 1)
-                {
+                    cout << "\033[2J\033[1;1H";
+                    
                     cout << "\nUsername: " << username << endl;
                     cout << "Paket yang Anda pilih: " << paketDurasi[durasiPilihan - 1] << endl;
                     cout << "Kecepatan yang Anda pilih: " << paketKecepatan[kecepatanPilihan - 1] << endl;
                     cout << "Harga Paket: Rp " << hargaPaket[durasiPilihan - 1][kecepatanPilihan - 1] << endl;
+                    cout<<"---------------------------------------------------"<<endl;
+                    cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
+                    cout<<"---------------------------------------------------"<<endl;
 					goto menuLain;
 					break;
+
+				menuLain:
+                //cout << "\n1. Pembayaran" << endl;
+                cout << "2. Produk lainnya" << endl;
+                cout << "3. Keluar" << endl;
+                cout << "Pilihlah angka 2-3: ";
+                int pilihanMenu;
+                cin >> pilihanMenu;
+                if (pilihanMenu == 1)
+                { /*
+                    cout << "\033[2J\033[1;1H";
+                    cout << "\nUsername: " << username << endl;
+                    cout << "Paket yang Anda pilih: " << paketDurasi[durasiPilihan - 1] << endl;
+                    cout << "Kecepatan yang Anda pilih: " << paketKecepatan[kecepatanPilihan - 1] << endl;
+                    cout << "Harga Paket: Rp " << hargaPaket[durasiPilihan - 1][kecepatanPilihan - 1] << endl;
+                    cout<<"---------------------------------------------------"<<endl;
+                    cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
+                    cout<<"---------------------------------------------------"<<endl;
+					goto menuLain;
+					break; */
                 }
                 else if (pilihanMenu == 2)
                 {
+                    cout << "\033[2J\033[1;1H";
+                    menuProdukLainnya:
                     // Produk lainnya
                     string produk[3] = {"Mifi MN01", "Mifi MN02", "Mifi MN03"};
                     long int hargaProduk[3] = {500000, 600000, 750000};
                     int produkMifi;
 
                     //Produk Mifi
+
 					cout << endl;
                     cout << "Pilih produk Mifi" << endl;
                     for(int i=0; i < 3; i++){
@@ -83,15 +103,24 @@ int main() {
                     cin >> produkMifi;
 
                     if(produkMifi >= 1 && produkMifi <= 3){
+                        cout << "\033[2J\033[1;1H";
+                        cout<<endl;
                         cout << "Anda memilih " << produk[produkMifi - 1] << " dengan harga Rp. " << hargaProduk[produkMifi - 1] << endl;
-						cout << "Produk yang anda pilih sudah masuk ke dalam nota pembayaran anda" << endl;
+						//cout << "Produk yang anda pilih sudah masuk ke dalam nota pembayaran anda" << endl;
+                        cout<<"---------------------------------------------------"<<endl;
+                        cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
+                        cout<<"---------------------------------------------------"<<endl;
+                        goto menuLain;
 						break;
                     } else {
                         cout << "Produk yang anda pilih tidak tersedia" << endl;
+                        goto menuProdukLainnya;
+                        break;
                     }
                 }
                 else if(pilihanMenu == 3)
                 {
+                    cout << "\033[2J\033[1;1H";
                     cout << "Terima kasih telah menggunakan layanan kami." << endl;
                     break;
                 }

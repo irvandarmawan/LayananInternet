@@ -1,52 +1,62 @@
-#include <iostream>// untuk apa ?
-#include <string>//untuk apa ?
+#include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-  
-    // Login
-    int i;//jelaskan variabel i
-    string username, password, daftaruser, daftarpass;//jelaskan variabel username dan password
-    menuLogin://jelaskan menu login
-    cout<<"Menu Login : "<<endl;
-    cout<<"1. Login"<<endl;
-    cout<<"2. Daftar"<<endl;
-    cout<<"Pilih Menu : ";
-    cin>>i;
-    if (i < 1 || i > 2){
+    int i; // Variabel untuk menyimpan pilihan menu
+    string username, password, daftaruser, daftarpass; // Variabel untuk menyimpan username dan password
+
+    menuLogin: // Label untuk mengarahkan kembali ke menu login jika pilihan tidak valid
+    cout << "Menu Login : " << endl;
+    cout << "1. Login" << endl;
+    cout << "2. Daftar" << endl;
+    cout << "Pilih Menu : ";
+    cin >> i;
+
+    if (i < 1 || i > 2) { // Memeriksa apakah pilihan menu valid
         cout << "Pilihan anda tidak valid" << endl;
-        goto menuLogin;
-    } else if (i==2){
-        cout<<"Daftar Akun"<<endl;
-        cout<<"Username: ";
-        cin>>daftaruser;
-        cout<<"Password: ";
-        cin>>daftarpass;
+        goto menuLogin; // Kembali ke menu login jika pilihan tidak valid
+    } else if (i == 2) { // Jika pengguna memilih untuk mendaftar akun
+        cout << "Daftar Akun" << endl;
+        cout << "Username: ";
+        cin >> daftaruser; // Meminta input username untuk pendaftaran
+        cout << "Password: ";
+        cin >> daftarpass; // Meminta input password untuk pendaftaran
     }
-    cout << "=========== Login ============" << endl;
-    cout << "Masukan Username: ";
-    cin >> username;
-    cout << "Masukan Password anda: ";
-    cin >> password;
-    //cek username dan password
-    if (username == daftaruser, "1" && password == daftarpass,"1") {
-        cout << "Selamat anda berhasil login" << endl;
-    } else {//jelaskan apa bila username dan password salah
-        cout << "\nUsername atau Password anda salah" << endl;
-        return 0;
+
+    while (true) { // Loop untuk mengulang proses login jika gagal
+        cout << "\033[2J\033[1;1H"; // Clear screen
+        cout << "=========== Login ============" << endl;
+        cout << "Masukan Username: ";
+        cin >> username; // Meminta input username untuk login
+        cout << "Masukan Password anda: ";
+        cin >> password; // Meminta input password untuk login
+
+        // Cek username dan password
+        if ((username == daftaruser || username == "1") && (password == daftarpass || password == "1")) {
+            cout << "Selamat anda berhasil login" << endl; // Menampilkan pesan berhasil login jika username dan password cocok
+            break; // Keluar dari loop jika login berhasil
+        } else { // Jika username dan password salah
+            cout << "\nUsername atau Password anda salah. Silakan coba lagi." << endl;
+        }
     }
+
     cout << endl;
 
-    // Menu Pilihan Paket Internet jelskan array 2D
-    string paketDurasi[] = {"1 bulan", "3 bulan", "6 bulan"};
-    string paketKecepatan[] = {"10Mb/s + Modem Wifi", "25Mb/s + Modem Wifi", "50Mb/s + Modem Wifi"};
-    int hargaPaket[3][3] = {
+    // Menu Pilihan Paket Internet
+    string paketDurasi[] = {"1 bulan", "3 bulan", "6 bulan"}; // Array 1D untuk menyimpan durasi paket
+    string paketKecepatan[] = {"10Mb/s + Modem Wifi", "25Mb/s + Modem Wifi", "50Mb/s + Modem Wifi"}; // Array 1D untuk menyimpan kecepatan paket
+    int hargaPaket[3][3] = { // Array 2D untuk menyimpan harga paket berdasarkan durasi dan kecepatan
         {100000, 150000, 200000},
         {270000, 400000, 550000},
         {500000, 700000, 900000}
     };
+    string produk[] = {"Mifi A", "Mifi B", "Mifi C"}; // Array 1D untuk menyimpan nama produk Mifi
+    int hargaProduk[] = {300000, 400000, 500000}; // Array 1D untuk menyimpan harga produk Mifi
+
     int durasiPilihan = 0, kecepatanPilihan = 0;
     while (true) {//jelaskan logic while paket bulanan
+        cout << "\033[2J\033[1;1H"; // Clear screen
         cout << "Pilih durasi paket internet:" << endl; //pemilihan durasi paket berapa bulan
         for (int bulan = 0; bulan < 3; bulan++) {//jelaskan statement mengenai bulan 
             cout << bulan+1 << ". Paket Langganan internet " << paketDurasi[bulan] << endl;
@@ -57,6 +67,7 @@ int main() {
             cout << "Pilihan durasi paket tidak valid!" << endl;
         } else {
 			cout << endl;
+            cout << "\033[2J\033[1;1H"; // Clear screen
             cout << "Pilih paket speed internet:" << endl; //pemilihan kecepatan paket internet
             for (int kecepatan = 0; kecepatan < 3; kecepatan++) {// jelaskan statement mengenai kecepatan
                 cout << kecepatan+1 << ". Paket speed " << paketKecepatan[kecepatan] << endl;
@@ -80,13 +91,13 @@ int main() {
             }
 
             while (true) {
-                menuLain://jelaskan menu lainnya
-                cout << "\n1. Pembayaran" << endl;
+                int pilihanMenu;
+                cout << "1. Pembayaran" << endl;
                 cout << "2. Produk lainnya" << endl;
                 cout << "3. Keluar" << endl;
-                cout << "Pilihlah angka 2-3: ";
-                int pilihanMenu;
+                cout << "Pilihlah angka 1-3: ";
                 cin >> pilihanMenu;
+
                 if (pilihanMenu == 1) //jelaskan pilhan 1.pembayaran
                 {   cout << "\033[2J\033[1;1H"; //clear screen
 
@@ -98,54 +109,42 @@ int main() {
                     cout<<"---------------------------------------------------"<<endl;
                     cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
                     cout<<"---------------------------------------------------"<<endl;
-					goto menuLain;//jelaskan goto menuLain
-					break;// jelaskan statement break
+					//goto menuLain;//jelaskan goto menuLain
+					//break;// jelaskan statement break
                 }
                 else if (pilihanMenu == 2) //jika memilih 2.produk lainnya
                 {
-                    cout << "\033[2J\033[1;1H";
-                    menuProdukLainnya://jelaskan menu produk lainnya
-                    // Produk lainnya
-                    string produk[3] = {"Mifi MN01", "Mifi MN02", "Mifi MN03"};
-                    long int hargaProduk[3] = {500000, 600000, 750000};
-                    int produkMifi;
+                    while (true) {
+                        cout << endl;
+                        cout << "Pilih produk Mifi" << endl;
+                        for (int i = 0; i < 3; i++) { // Menampilkan daftar produk Mifi
+                            cout << i + 1 << ". " << produk[i] << " dengan harga Rp. " << hargaProduk[i] << endl;
+                        }
 
-                    //Produk Mifi
+                        cout << "Silahkan pilih dari angka 1-3: ";
+                        int produkMifi;
+                        cin >> produkMifi;
 
-					cout << endl;
-                    cout << "Pilih produk Mifi" << endl;
-                    for(int i=0; i < 3; i++){//jelaskan statement produk mifi
-                        cout << i+1 << "." << produk[i] << " dengan harga Rp." << hargaProduk[i] << endl;
+                        if (produkMifi >= 1 && produkMifi <= 3) {
+                            cout << "\033[2J\033[1;1H";
+                            cout << endl;
+                            cout << "Anda memilih " << produk[produkMifi - 1] << " dengan harga Rp. " << hargaProduk[produkMifi - 1] << endl;
+                            cout << "---------------------------------------------------" << endl;
+                            cout << "Pembayaran melalui virtual account BCA 1234567890" << endl;
+                            cout << "---------------------------------------------------" << endl;
+                            break; // Keluar dari loop produk lainnya setelah memilih produk yang valid
+                            
+                        } else {
+                            cout << "\033[2J\033[1;1H"; // Clear screen
+                            cout << "Produk yang anda pilih tidak tersedia" << endl;
+                        }
                     }
-
-                    cout << "Silahkan pilih dari angka 1-3 : ";
-                    cin >> produkMifi;
-
-                    if(produkMifi >= 1 && produkMifi <= 3){
-                        cout << "\033[2J\033[1;1H";
-                        cout<<endl;
-                        cout << "Anda memilih " << produk[produkMifi - 1] << " dengan harga Rp. " << hargaProduk[produkMifi - 1] << endl;
-						
-                        cout<<"---------------------------------------------------"<<endl;
-                        cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
-                        cout<<"---------------------------------------------------"<<endl;
-                        goto menuLain;
-						break;
-                    } else {
-                        cout << "Produk yang anda pilih tidak tersedia" << endl;
-                        goto menuProdukLainnya;
-                        break;
-                    }
-                }
-                else if(pilihanMenu == 3) //jika memilih 3.keluar jelaskan
-                {
+                } else if (pilihanMenu == 3) { // Jika memilih 3. Keluar
                     cout << "\033[2J\033[1;1H";
                     cout << "Terima kasih telah menggunakan layanan kami." << endl;
-                    break;
-                }
-                else 
-                {
-                    cout << "Pilihan anda tidak valid" << endl; 
+                    break; // Keluar dari loop utama dan mengakhiri program
+                } else {
+                    cout << "Pilihan anda tidak valid" << endl;
                 }
             }
         }

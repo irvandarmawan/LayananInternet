@@ -76,7 +76,7 @@ int main() {
                     cout<<"---------------------------------------------------"<<endl;
                     cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
                     cout<<"---------------------------------------------------"<<endl;
-                    break;
+                    
             }
 
             while (true) {

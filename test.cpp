@@ -153,6 +153,7 @@ int main() {
                     cout << "Pilihan anda tidak valid" << endl; 
                 }
             }
+         break;
         }
     }
     return 0;

@@ -17,18 +17,18 @@ int main() {
         cout << "Pilih Menu : ";
         cin >> i;
 
-        if (i < 1 || i > 2) { // Memeriksa apakah pilihan menu valid
+        if (i < 1 || i > 2) { 
             cout << "Pilihan anda tidak valid" << endl;
-        } else if (i == 2) { // Jika pengguna memilih untuk mendaftar akun
+        } else if (i == 2) { 
             if (daftarAkun(daftaruser, daftarpass)) {
                 cout << "Akun berhasil didaftarkan." << endl;
             } else {
                 cout << "Pendaftaran akun gagal." << endl;
             }
-        } else if (i == 1) { // Jika pengguna memilih untuk login
+        } else if (i == 1) { 
             if (login(daftaruser, daftarpass, username, password)) {
                 cout << "Selamat anda berhasil login" << endl;
-                break; // Keluar dari loop jika login berhasil
+                break; 
             } else {
                 cout << "Username atau Password anda salah. Silakan coba lagi." << endl;
             }
@@ -44,24 +44,26 @@ int main() {
         {500000, 700000, 900000}
     };
     int durasiPilihan = 0, kecepatanPilihan = 0;
-    while (true) {//jelaskan logic while paket bulanan
-        cout << "Pilih durasi paket internet:" << endl; //pemilihan durasi paket berapa bulan
-        for (int bulan = 0; bulan < 3; bulan++) {//jelaskan statement mengenai bulan 
+    while (true) {
+         //pemilihan durasi paket berapa bulan
+        cout << "Pilih durasi paket internet:" << endl;
+        for (int bulan = 0; bulan < 3; bulan++) {
             cout << bulan+1 << ". Paket Langganan internet " << paketDurasi[bulan] << endl;
         }
         cout << "Pilihlah angka 1-3: ";
         cin >> durasiPilihan;
-        if (durasiPilihan < 0 || durasiPilihan > 3) { //jelaskan statement jika durasi paket tidak valid
+        if (durasiPilihan < 0 || durasiPilihan > 3) { 
             cout << "Pilihan durasi paket tidak valid!" << endl;
         } else {
+            //pemilihan kecepatan paket internet
 			cout << endl;
-            cout << "Pilih paket speed internet:" << endl; //pemilihan kecepatan paket internet
-            for (int kecepatan = 0; kecepatan < 3; kecepatan++) {// jelaskan statement mengenai kecepatan
+            cout << "Pilih paket speed internet:" << endl; 
+            for (int kecepatan = 0; kecepatan < 3; kecepatan++) {
                 cout << kecepatan+1 << ". Paket speed " << paketKecepatan[kecepatan] << endl;
             }
             cout << "Silahkan pilih angkanya 1-3: ";
             cin >> kecepatanPilihan;
-            if (kecepatanPilihan < 0 || kecepatanPilihan > 3) {//jelaskan statement jika kecepatan paket tidak valid
+            if (kecepatanPilihan < 0 || kecepatanPilihan > 3) {
                 cout << "Pilihan kecepatan tidak valid!" << endl;
             } else {
                     cout << "\033[2J\033[1;1H"; //clear screen
@@ -77,14 +79,14 @@ int main() {
             }
 
             while (true) {
-                menuLain://jelaskan menu lainnya
+                menuLain://menu lainnya
                 cout << "\n1. Pembayaran" << endl;
                 cout << "2. Produk lainnya" << endl;
                 cout << "3. Keluar" << endl;
                 cout << "Pilihlah angka 2-3: ";
                 int pilihanMenu;
                 cin >> pilihanMenu;
-                if (pilihanMenu == 1) //jelaskan pilhan 1.pembayaran
+                if (pilihanMenu == 1) 
                 {   cout << "\033[2J\033[1;1H"; //clear screen
 
                     //menampilkan nota pembayaran
@@ -95,13 +97,13 @@ int main() {
                     cout<<"---------------------------------------------------"<<endl;
                     cout << "pembayaran melalui virtual account BCA 1234567890" << endl;
                     cout<<"---------------------------------------------------"<<endl;
-					goto menuLain;//jelaskan goto menuLain
-					break;// jelaskan statement break
+					goto menuLain;
+					break;
                 }
-                else if (pilihanMenu == 2) //jika memilih 2.produk lainnya
+                else if (pilihanMenu == 2) 
                 {
                     cout << "\033[2J\033[1;1H";
-                    menuProdukLainnya://jelaskan menu produk lainnya
+                    menuProdukLainnya:
                     // Produk lainnya
                     string produk[3] = {"Mifi MN01", "Mifi MN02", "Mifi MN03"};
                     long int hargaProduk[3] = {500000, 600000, 750000};
@@ -111,7 +113,7 @@ int main() {
 
 					cout << endl;
                     cout << "Pilih produk Mifi" << endl;
-                    for(int i=0; i < 3; i++){//jelaskan statement produk mifi
+                    for(int i=0; i < 3; i++){
                         cout << i+1 << "." << produk[i] << " dengan harga Rp." << hargaProduk[i] << endl;
                     }
 
@@ -134,7 +136,7 @@ int main() {
                         break;
                     }
                 }
-                else if(pilihanMenu == 3) //jika memilih 3.keluar jelaskan
+                else if(pilihanMenu == 3) 
                 {
                     cout << "\033[2J\033[1;1H";
                     cout << "Terima kasih telah menggunakan layanan kami." << endl;
@@ -155,10 +157,10 @@ int main() {
 bool daftarAkun(string &daftaruser, string &daftarpass) {
     cout << "Daftar Akun" << endl;
     cout << "Username: ";
-    cin >> daftaruser; // Meminta input username untuk pendaftaran
+    cin >> daftaruser; 
     cout << "Password: ";
-    cin >> daftarpass; // Meminta input password untuk pendaftaran
-    return true; // Mengembalikan true jika pendaftaran berhasil
+    cin >> daftarpass; 
+    return true; 
 }
 
 // Definisi fungsi login
@@ -166,14 +168,14 @@ bool login(string daftaruser, string daftarpass, string &username, string &passw
     cout << "\033[2J\033[1;1H"; // Clear screen
     cout << "=========== Login ============" << endl;
     cout << "Masukan Username: ";
-    cin >> username; // Meminta input username untuk login
+    cin >> username; 
     cout << "Masukan Password anda: ";
-    cin >> password; // Meminta input password untuk login
+    cin >> password; 
 
     // Cek username dan password
     if ((username == daftaruser || username == "1") && (password == daftarpass || password == "1")) {
-        return true; // Mengembalikan true jika login berhasil
+        return true; 
     } else {
-        return false; // Mengembalikan false jika login gagal
+        return false; 
     }
 }

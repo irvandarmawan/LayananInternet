@@ -22,7 +22,7 @@ int main() {
     // Variabel untuk menyimpan username dan password
     string username, password, daftaruser, daftarpass; 
     // Variabel untuk menyimpan pilihan menu
-    int i; 
+    string i; 
 
     // Loop utama
     while (true) {
@@ -34,17 +34,14 @@ int main() {
         cin >> i;
 
         // Memeriksa pilihan menu
-        if (i < 1 || i > 2) { 
-            // Menampilkan pesan jika pilihan tidak valid
-            cout << "Pilihan anda tidak valid" << endl;
-        } else if (i == 2) { 
+        if (i == "2") { 
             // Memanggil fungsi daftarAkun jika pilihan adalah 2
             if (daftarAkun(daftaruser, daftarpass)) {
                 cout << "Akun berhasil didaftarkan." << endl;
             } else {
                 cout << "Pendaftaran akun gagal." << endl;
             }
-        } else if (i == 1) { 
+        } else if (i == "1") { 
             // Memanggil fungsi login jika pilihan adalah 1
             if (login(daftaruser, daftarpass, username, password)) {
                 cout << "Selamat anda berhasil login" << endl;
@@ -53,7 +50,11 @@ int main() {
             } else {
                 cout << "Username atau Password anda salah. Silakan coba lagi." << endl;
             }
-        }
+        } else { 
+            // Menampilkan pesan jika pilihan tidak valid
+            cout << "Pilihan anda tidak valid" << endl;
+            
+        } 
     }
     return 0;
 }
